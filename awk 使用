@@ -1,0 +1,1 @@
+awk -F'\t|;|=' -v OFS='\t' 'NR=FNR{a[$14]=$1;b[$14]=$4;c[$14]=$5}NR!=FNR{}' hsa.gff3 ## -F 可以定义多个分隔符， -v OFS= 可以定义print分隔符
