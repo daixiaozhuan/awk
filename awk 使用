@@ -14,3 +14,4 @@ for i in $(find . -name "mirtop.gff");do awk -F'\t|;|=| ' -v OFS='\t' 'NR==FNR{a
 sort ref.list |uniq >ref.uniq.list
 
 ## use ref.uniq.list to replace the ID in the merge_tr_greater10_fill0_average.txt
+awk -v OFS='\t' 'NR==FNR{a[$1]=$2}NR!=FNR{$1=a[$1];print $0}' ref.uniq.list merge_tr_greater10_fill0_average.txt >merge_tr_greater10_fill0_average_replaceID.txt
