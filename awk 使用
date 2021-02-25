@@ -7,7 +7,7 @@ awk -F'\t|;|=' -v OFS='\t' 'NR==FNR{a[$14]=$1;b[$14]=$4;c[$14]=$5;} NR!=FNR {pri
 
 
 ## loop all the subfolder to extract all isomiRNA ID from mirtop.gff and uniq it to a reference
-for i in $(find . -name "mirtop.gff");do awk -F'\t|;|=| ' -v OFS='\t' 'NR==FNR{a[$14]=$1;b[$14]=$4;c[$14]=$5;} NR!=FNR {print $13"_"$16,$1"_""hg38"":"a[$1]":"b[$1]+$4"-"b[$1]+$5":"$7}' ../result/hsa.gff3 $i |grep -v "^_" >>ref.list;done
+for i in $(find . -name "mirtop.gff");do awk -F'\t|;|=| ' -v OFS='\t' 'NR==FNR{a[$14]=$1;b[$14]=$4;c[$14]=$5;} NR!=FNR {print $13"_"$16,$10,$1"_""hg38"":"a[$1]":"b[$1]+$4"-"b[$1]+$5":"$7}' ../result/hsa.gff3 $i |grep -v "^_" >>ref.list;done
 sort ref.list |uniq >ref.uniq.list
 
 ## use ref.uniq.list to replace the ID in the merge_tr_greater10_fill0_average.txt
