@@ -15,3 +15,8 @@ awk -v OFS='\t' 'NR==FNR{a[$1]=$3"\t"$2}NR!=FNR{$1=a[$1];print $0}' ref.list.uni
 
 ## use awk to multiply 2 for every value
 awk -v OFS="\t" '{if (NR==1){print $0} if (NR>1){for (i = 3; i <= 194; ++i){$i=$i*2}print $0}}' merge_tr_greater10_fill0_average_replaceID.txt >merge_tr_greater10_fill0_average_replaceID_multiply2.txt
+
+
+## calculate the file size
+
+ls *.fastq.gz -l --block-size=M |cut -d " " -f 5,9 |cut -d "_" -f 1 >filesize.txt
