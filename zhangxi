@@ -1,1 +1,1 @@
-more 基因_LDQ.txt |sort |uniq |awk -F'\t' '{chr[$3]=$2;sum[$3]++}END{for(i in sum) print i"\t"sum[i]"\t"chr[i]}' |sort -k2nr |awk 'BEGIN{sum2=0}{sum2+=$2}END{print $0"\t"($2/sum2)}'
+more 基因_ZX.txt |sort |uniq |awk -F'\t' '{chr[$3]=$2;sum[$3]++;sum2[$1]++}END{for(i in sum) {sample=length(sum2); print i"\t""\t""\t"sum[i]"\t"chr[i]"\t"(sum[i]/sample)}}' |sort -k2nr >基因_ZX_dai.txt
