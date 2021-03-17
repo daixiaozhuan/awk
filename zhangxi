@@ -1,1 +1,6 @@
-more 基因_ZX.txt |sort |uniq |awk -F'\t' '{chr[$3]=$2;sum[$3]++;sum2[$1]++}END{for(i in sum) {sample=length(sum2); print i"\t""\t""\t"sum[i]"\t"chr[i]"\t"(sum[i]/sample)}}' |sort -k2nr >基因_ZX_dai.txt
+more 李_site.txt |sort |uniq |awk -F"\t" '{chr[$4]=$2"\t"$3"\t"$5"\t"$6"""\t"$7"\t"$8"\t"$9;sum[$4]++;sum2[$1]++}END{for(i in sum) {sample=length(sum2); print i"\t"sum[i]"\t"chr[i]"\t"(sum[i]/sample)}}'| sort -k2nr >李_site_dai.txt
+
+
+
+
+more 李_gene.txt |sort |uniq |awk -F"\t" '{chr[$3]=$2;sum[$3]++;sum2[$1]++}END{for(i in sum) {sample=length(sum2); print i"\t"sum[i]"\t"chr[i]"\t"(sum[i]/sample)}}'| sort -k2nr >李_gene_dai.txt
