@@ -1,2 +1,2 @@
 ##从字符串后面往前面提取
-more SRR2105510_GSM1825259_Sample_PC26_trim_output.txt |awk '{print substr($2,length($2)-1)}'
+more SRR2105510_GSM1825259_Sample_PC26_trim_output.txt |awk 'NR!=1{str[substr($2,length($2)-1)]++} END {for(i in str) print str[i]"\t"i"\n"}'
