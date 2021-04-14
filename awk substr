@@ -1,2 +1,2 @@
-##从字符串后面往前面提取
-more SRR2105510_GSM1825259_Sample_PC26_trim_output.txt |awk 'NR!=1{str[substr($2,length($2)-1)]++} END {for(i in str) print str[i]"\t"i"\n"}'
+##从字符串后面往前面提取,并计算16种pattern出现的频率
+more SRR2105510_GSM1825259_Sample_PC26_trim_output.txt |grep "mature-tRNA" |awk 'NR!=1{str[substr($2,length($2)-1)]++;} END {for(i in str) print i"\t"str[i]"\t"(str[i]/(NR-1))}'
